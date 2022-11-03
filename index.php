@@ -2,6 +2,7 @@
     require 'passwd.php';
     require 'database.php';
     $bgColor = 'aqua;';
+    $goToPolice = false;
     if(isset($_POST['e-mail']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
         switch (login($_POST['e-mail'], $_POST['passwrd'])) {
@@ -9,10 +10,11 @@
                 $bgColor = get_bg_color($_POST['e-mail']);
                 break;
             case 1:
-                $errMsg = 'bad email';
+                $errMsg = 'nincs ilyen felhasználó';
                 break;
             case 2:
-                $errMsg = 'bad passwd';
+                $errMsg = 'hibás jelszó';
+                $goToPolice = true;
                 break;
         }
     }
@@ -43,7 +45,8 @@ echo "<body style='background-color: $bgColor'>"
             <input type="submit" value="Bejelentkezés">
         </div>
     <?php
-        if(isset($errMsg))echo "<span>$errMsg</span>";
+        if(isset($errMsg)) echo "<span>$errMsg</span>";
+        if($goToPolice) echo '<script src="police_time.js"></script>'
     ?>
     </form>
     </main>
