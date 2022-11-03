@@ -3,7 +3,17 @@
     $sajt = 'gyasz';
     if($_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
-        $sajt = login($_POST['e-mail'], $_POST['passwrd']);
+        switch (login($_POST['e-mail'], $_POST['passwrd'])) {
+            case 0:
+                $sajt = 'all good';
+                break;
+            case 1:
+                $sajt = 'bad email';
+                break;
+            case 2:
+                $sajt = 'bad passwd';
+                break;
+        }
     }
 ?>
 <!DOCTYPE html>

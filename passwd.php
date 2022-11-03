@@ -1,8 +1,12 @@
 <?php
+    //Retrurns: all good    => 0
+    //          bad email   => 1
+    //          bad passwd  => 2
     function login($email, $passwd){
         $passwords = open_pwds();
-        
-        return $passwords[$email];
+        if(!isset($passwords[$email])) return 1;
+        if($passwords[$email] == $passwd) return 0;
+        return 2;
     }
 
     function open_pwds(){
