@@ -3,7 +3,8 @@
         $conn = make_connection();
         $sql = "SELECT Titkos FROM tabla WHERE Username LIKE '$email';";
         $result = $conn->query($sql);
-        return mysqli_fetch_row($result)[0];
+        global $COLOR;
+        return $COLOR[mysqli_fetch_row($result)[0]];
     }
 
     function make_connection(){
@@ -13,4 +14,13 @@
         }
         return $conn;
     }
+
+    $COLOR = [
+        'piros' => 'red',
+        'zold' => 'green',
+        'sarga' => 'yellow',
+        'kek' => 'blue',
+        'fekete' => 'black',
+        'feher' => 'white',
+    ]
 ?>
