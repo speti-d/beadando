@@ -1,5 +1,6 @@
 <?php
     require 'passwd.php';
+    require 'database.php';
     $sajt = 'gyasz';
     if($_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
