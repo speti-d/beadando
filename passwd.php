@@ -1,20 +1,19 @@
 <?php
     function login($email, $passwd){
-        //$passwords = open_pwds();
-        $password_file = fopen('password.txt', 'r');
-
-        return decrypt(fgets($password_file));
+        $passwords = open_pwds();
+        
+        return $passwords[$email];
     }
 
-    // Non functional
     function open_pwds(){
         if(file_exists('password.txt')){
             $password_file = fopen('password.txt', 'r');
             while(!feof($password_file)){
-                $line = decrypt(fgets($password_file));
+                $line = explode('*', decrypt(fgets($password_file)));
+                if (isset($line[1]))$return_arr[$line[0]] = $line[1];
             }
         }
-        return 'a return value';
+        return $return_arr;
     }
 
     function decrypt($secret){
