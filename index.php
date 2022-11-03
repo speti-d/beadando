@@ -1,5 +1,10 @@
 <?php
     require 'passwd.php';
+    $sajt = 'gyasz';
+    if($_POST['e-mail'] != '' and $_POST['passwrd'] != '')
+    {
+        $sajt = login($_POST['e-mail'], $_POST['passwrd']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="hu">

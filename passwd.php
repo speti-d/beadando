@@ -1,7 +1,6 @@
 <?php
-    if($_POST['e-mail'] != '' and $_POST['passwrd'] != '')
-    {
-        $sajt = 'gyasz';
+    function login($email, $passwd){
+        $sajt = 'rak';
         if(file_exists('password.txt')){
             $password_file = fopen('password.txt', 'r');
             $sajt = '';
@@ -9,5 +8,6 @@
                 $sajt .= fgets($password_file);
             }
         }
+        return $sajt;
     }
 ?>
