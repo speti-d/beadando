@@ -3,7 +3,7 @@
     require 'database.php';
     $bgColor = 'aqua;';
     $errMsg = '';
-    if($_POST['e-mail'] != '' and $_POST['passwrd'] != '')
+    if(isset($_POST['e-mail']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
         switch (login($_POST['e-mail'], $_POST['passwrd'])) {
             case 0:
