@@ -2,7 +2,6 @@
     require 'passwd.php';
     require 'database.php';
     $bgColor = 'aqua;';
-    $errMsg = '';
     if(isset($_POST['e-mail']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
         switch (login($_POST['e-mail'], $_POST['passwrd'])) {
@@ -24,20 +23,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
     <title>Webfejl. Beadando</title>
 </head>
 <?php
 echo "<body style='background-color: $bgColor'>"
 ?>
+    <main>
     <form action="index.php" method="post">
-        <label for="e-mail">E-mail:</label>
-        <input type="email" name="e-mail" id="e-mail"><br>
-        <label for="passwrd">Password:</label>
-        <input type="password" name="passwrd" id="passwrd"><br>
-        <input type="submit" value="Bejelentkezés">
-    </form>
+        <div>
+            <label for="e-mail">E-mail:</label>
+            <input type="email" name="e-mail" id="e-mail"><br>
+        </div>
+        <div>
+            <label for="passwrd">Password:</label>
+            <input type="password" name="passwrd" id="passwrd"><br>
+        </div>
+        <div>
+            <input type="submit" value="Bejelentkezés">
+        </div>
     <?php
-        echo $errMsg;
+        if(isset($errMsg))echo "<span>$errMsg</span>";
     ?>
+    </form>
+    </main>
 </body>
 </html>
