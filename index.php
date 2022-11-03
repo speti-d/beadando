@@ -6,7 +6,7 @@
     {
         switch (login($_POST['e-mail'], $_POST['passwrd'])) {
             case 0:
-                $sajt = 'all good';
+                $sajt = get_bg_color($_POST['e-mail']);
                 break;
             case 1:
                 $sajt = 'bad email';
