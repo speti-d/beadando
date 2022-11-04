@@ -3,7 +3,7 @@
     require 'database.php';
     $bgColor = 'aqua;';
     $goToPolice = false;
-    if(isset($_POST['e-mail']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
+    if(isset($_POST['e-mail']) and isset($_POST['passwrd']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
     {
         switch (login($_POST['e-mail'], $_POST['passwrd'])) {
             case 0:
@@ -35,11 +35,11 @@ echo "<body style='background-color: $bgColor'>"
     <form action="index.php" method="post">
         <div>
             <label for="e-mail">E-mail:</label>
-            <input type="email" name="e-mail" id="e-mail"><br>
+            <input type="email" name="e-mail" id="e-mail" required><br>
         </div>
         <div>
             <label for="passwrd">Password:</label>
-            <input type="password" name="passwrd" id="passwrd"><br>
+            <input type="password" name="passwrd" id="passwrd" required><br>
         </div>
         <div>
             <input type="submit" value="Bejelentkezés">
