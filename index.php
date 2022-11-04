@@ -3,11 +3,13 @@
     require 'database.php';
     $bgColor = 'aqua;';
     $goToPolice = false;
-    if(isset($_POST['e-mail']) and isset($_POST['passwrd']) and $_POST['e-mail'] != '' and $_POST['passwrd'] != '')
+    $email = filter_input(INPUT_POST, 'e-mail', FILTER_SANITIZE_EMAIL);
+    $passwrd = filter_input(INPUT_POST, 'passwrd');
+    if($email and $passwrd)
     {
-        switch (login($_POST['e-mail'], $_POST['passwrd'])) {
+        switch (login($email, $passwrd)) {
             case 0:
-                $bgColor = get_bg_color($_POST['e-mail']);
+                $bgColor = get_bg_color($email);
                 break;
             case 1:
                 $errMsg = 'nincs ilyen felhasználó';
